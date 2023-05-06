@@ -67,4 +67,4 @@ def verifier_reponse(n_clicks, reponse_utilisateur):
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True, host="0.0.0.0", port=8031)
+    app.run_server(debug=True, host="0.0.0.0", port=8043)
