@@ -6,7 +6,7 @@ import random
 app = Dash(__name__)
 server=app.server
 
-# Définissez la question et la réponse correcte
+#Définition des questions et des réponses correctes
 question = ["Quelle commande permet de créer une nouvelle branche ?", 
             "Quel est l'opérateur de comparaison qui permet de vérifier si deux valeurs sont égales ?", 
             "Quelle commande linux permet de lister le contenu d'un répertoire ?", 
@@ -36,6 +36,7 @@ reponse = ["git branch", "==", "ls", "cd", "rm -rv",
                   "Vrai", "mkdir", ">", "echo", "chmod", 
                   "rwx", "sudo"]
 
+#Fonction permettant la mise en page de la page html
 def serve_layout():
     indexQuestion=random.randint(0, len(question)-1)
     choixQuestion=question[indexQuestion]
@@ -54,7 +55,6 @@ def serve_layout():
 app.layout=serve_layout
 app.title = "Quiz RG"
 
-# Créez une fonction de rappel pour vérifier la réponse
 @app.callback(
     Output(component_id='output', component_property='children'),
     [Input(component_id='submit-button', component_property='n_clicks')],
@@ -62,6 +62,7 @@ app.title = "Quiz RG"
      State(component_id='question', component_property='children')]
 )
 
+#Fonction pour vérifier la réponse
 def verification(n_clicks, reponse_utilisateur, question_text):
     if n_clicks > 0:
         indexQuestion = question.index(question_text[len("Question : "):])
