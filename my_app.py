@@ -1,6 +1,6 @@
 from dash import Dash, dcc, html, Output, Input, State, callback
 import random
-
+import unidecode
 
 
 app = Dash(__name__)
@@ -14,7 +14,7 @@ question = ["Quelle commande permet de créer une nouvelle branche ?",
             "Quelle commande permet de supprimer un répertoire et son contenu ?",
             "Quelle commande permet de rechercher une chaine de caractère dans un fichier ?", 
             "Quelle commande permet de changer de branche ?", 
-            "Quelle commande permet de créer une copie locale d'une reponsitory git ?", 
+            "Quelle commande permet de créer une copie locale d'une repository git ?", 
             "Quelle commande linux permet de planifier l'exécution de commandes ou de scripts à intervalles réguliers  ?", 
             "Quelle package python permet la création d'un tableau de bord ?", 
             "Quelle commande permet d'afficher le contenu d'un fichier ?", 
@@ -47,7 +47,8 @@ def serve_layout():
         html.H3("Question : " + choixQuestion, id="question"),
         dcc.Input(id='user-input', type='text', value='', placeholder='Entrez votre réponse ici...'),
         html.Button('Vérifier la réponse', id='submit-button', n_clicks=0),
-        html.Div(id='output')
+        html.Div(id='output'),
+        html.H6("Veuillez actualiser la page pour une accéder à une autre question")
     ])
     
     return layout
@@ -67,6 +68,8 @@ def verification(n_clicks, reponse_utilisateur, question_text):
     if n_clicks > 0:
         indexQuestion = question.index(question_text[len("Question : "):])
         if reponse_utilisateur.lower() == reponse[indexQuestion].lower():
+            return html.P("Bonne réponse !")
+        if unidecode.unidecode(reponse_utilisateur.lower()).__contains__(unidecode.unidecode(reponse[indexQuestion].lower())):
             return html.P("Bonne réponse !")
         else:
             return html.P(f"Mauvaise réponse. La réponse était {reponse[indexQuestion]}")
