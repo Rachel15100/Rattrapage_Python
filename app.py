@@ -27,7 +27,7 @@ question = ["Quelle commande permet de créer une nouvelle branche ?",
             "Quelle sont les lettres permettant à un utilisateur de lire, écrire et exécuter un fichier ?", 
             "Quelle commande permet d'exécuter une command en tant que super utilisateur ?"]
 
-correct_answer = ["git branch", "==", "ls", "cd", "rm -rv",
+reponse = ["git branch", "==", "ls", "cd", "rm -rv",
                   "grep", "git checkout", "git clone", "cron", "dash",
                   "cat", "curl", "Faux", "Système d'exploitation", ".sh", 
                   "Vrai", "mkdir", ">", "echo", "chmod", 
@@ -40,10 +40,11 @@ def serve_layout():
 
     layout = html.Div([
         html.H1("Rattrapage Git, Python, Linux"),
-        html.H2("Question : " + choixQuestion, id="question"),
+        html.H3("Question : " + choixQuestion, id="question"),
         dcc.Input(id='user-input', type='text', value='', placeholder='Entrez votre réponse ici...'),
         html.Button('Vérifier la réponse', id='submit-button', n_clicks=0),
-        html.Div(id='output')
+        html.Div(id='output'),
+	html.H6("Veuillez actualiser pour changer de question")
     ])
     return layout
 
@@ -58,15 +59,15 @@ app.title = "Quiz RG"
      State(component_id='question', component_property='children')]
 )
 
-def check_answer(n_clicks, user_answer, question_text):
+def check_answer(n_clicks, reponse_utilisateur, question_text):
     if n_clicks > 0:
         indexQuestion = question.index(question_text[len("Question : "):])
-        if user_answer.lower() == correct_answer[indexQuestion].lower():
+        if reponse_utilisateur.lower() == reponse[indexQuestion].lower():
             return html.P("Bonne réponse !")
         else:
-            return html.P(f"Mauvaise réponse. La réponse était {correct_answer[indexQuestion]}")
+            return html.P(f"Mauvaise réponse. La réponse était {reponse[indexQuestion]}")
     else:
         return ""
 
 if __name__ == "__main__":
-    app.run_server(debug=True, host="0.0.0.0", port=8066)
+    app.run_server(debug=True, host="0.0.0.0", port=8067)
