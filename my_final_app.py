@@ -38,11 +38,10 @@ def serve_layout():
         html.H1("Rattrapage Git, Python, Linux"),
         html.H3("Question : " + choixQuestion, id="question"),
         dcc.Input(id='user-input', type='text', value='', placeholder='Entrez votre réponse ici...'),
-        html.Button('evaluate answer', id='submit-button', n_clicks=0),
+        html.Button('Evaluate answer', id='submit-button', n_clicks=0),
         html.Div(id='output'),
         html.H5("Veuillez cliquer sur random question pour changer de question"),
-        html.Br(),
-        html.A(html.Button('random question', id='refresh-button'), href='http://13.39.83.94:8017')
+        html.A(html.Button('Random question', id='refresh-button'), href='http://13.39.83.94:8017')
     ])
     
     return layout
