@@ -8,7 +8,7 @@ server=app.server
 
 dico=dict()
 dico={"[Git] Quelle commande permet de créer une nouvelle branche ?":"git branch",
-      "[Python] Quel est l'opérateur de comparaison qui permet de vérifier si deux valeurs sont égales ?":"==",
+      "[Python] Comment initialiser une classe ?":"__init__",
       "[Linux] Quelle commande linux permet de lister le contenu d'un répertoire ?": "ls", 
       "[Linux] Quelle commande permet de changer de répertoire ?": "cd",
       "[Linux] Quelle commande permet de supprimer un répertoire et son contenu ?":"rm -rv", 
@@ -28,7 +28,8 @@ dico={"[Git] Quelle commande permet de créer une nouvelle branche ?":"git branc
       "[Linux] Quelle est la commande pour saisir du texte dans un fichier texte linux ? (4 lettres)":("echo", "vim"),
       "[Linux] Quelle est la commande pour changer les permissions d'un fichier ?":"chmod",
       "[Linux] Quelle sont les lettres permettant à un utilisateur de lire, écrire et exécuter un fichier ?":"rwx",
-      "[LInux] Quelle commande permet d'exécuter une commande en tant que super utilisateur ?":"sudo"}
+      "[Linux] Quelle commande permet d'exécuter une commande en tant que super utilisateur ?":"sudo", 
+      "[Python] L'utilisation de classes est de la programation orientée objet. Vrai ou Faux ?" : "Vrai"}
 
 
 def serve_layout():
