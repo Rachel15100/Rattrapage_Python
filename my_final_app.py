@@ -61,9 +61,11 @@ def verification_Dico(n_clicks, reponse_utilisateur, question_text):
     if n_clicks>0:
         reponse=dico[question_text.replace("Question : ", "")]
         if reponse_utilisateur.lower()==reponse.lower():
-            return html.P("Bonne réponse !")
+            return html.P("Bonne réponse ! ✅", style={'color':'green'})
+        if unidecode.unidecode(reponse_utilisateur.lower()).__contains__(unidecode.unidecode(reponse.lower())):
+            return html.P("Bonne réponse ! ✅", style={'color':'green'})
         else:
-            return html.P("Mauvaise réponse")
+            return html.P(f"Mauvaise réponse ❌ La réponse était {reponse}", style={'color':'red'})
     else:
         return ""
 
