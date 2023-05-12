@@ -40,7 +40,7 @@ def serve_layout():
         dcc.Input(id='user-input', type='text', value='', placeholder='Entrez votre réponse ici...'),
         html.Button('evaluate answer', id='submit-button', n_clicks=0),
         html.Div(id='output'),
-        html.H5("Veuillez actualiser la page pour une accéder à une autre question"),
+        html.H5("Veuillez cliquer sur random question pour changer de question"),
         html.Br(),
         html.A(html.Button('random question', id='refresh-button'), href='http://13.39.83.94:8017')
     ])
